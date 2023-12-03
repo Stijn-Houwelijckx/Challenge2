@@ -49,8 +49,13 @@ export default function App() {
       bookAuthor={itemData.item.bookAuthor}
       bookDescription={itemData.item.bookDescription}
       bookISBN={itemData.item.bookISBN}
+      onTitlePress={() => bookTitlePressedHandler(itemData.item.bookTitle)}
     />
   );
+
+  const bookTitlePressedHandler = (pressedTitle) => {
+    console.log(pressedTitle + " pressed");
+  };
 
   return (
     <View style={styles.container}>

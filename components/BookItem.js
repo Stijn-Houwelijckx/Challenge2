@@ -4,9 +4,16 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import ReadBtnItem from "./ReadBtnItem";
 
 const BookItem = (props) => {
+  const bookReadHandler = () => {
+    console.log(props.bookTitle + " read");
+  };
+
   return (
     <View style={styles.bookItem}>
-      <Text style={styles.bookTitle}>{props.bookTitle}</Text>
+      <TouchableOpacity style={styles.bookTitle} onPress={props.onTitlePress}>
+        <Text>{props.bookTitle}</Text>
+      </TouchableOpacity>
+
       <Text style={[styles.bookAuthor, styles.text]}>{props.bookAuthor}</Text>
       <Text style={[styles.bookDescription, styles.text]}>
         {props.bookDescription}
@@ -14,7 +21,7 @@ const BookItem = (props) => {
 
       <View style={styles.bookItemBottomContainer}>
         <Text style={[styles.isbnNumber, styles.text]}>{props.bookISBN}</Text>
-        <ReadBtnItem btnText="READ" />
+        <ReadBtnItem btnText="READ" onBookRead={bookReadHandler} />
       </View>
     </View>
   );
@@ -46,14 +53,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-  },
-
-  button: {
-    borderWidth: 2,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    backgroundColor: "#FFF",
-    borderColor: "#000",
   },
 });
 
