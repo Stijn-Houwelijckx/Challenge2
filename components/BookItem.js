@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
+import ReadBtnItem from "./ReadBtnItem";
+
 const BookItem = (props) => {
   return (
     <View style={styles.bookItem}>
@@ -12,11 +14,7 @@ const BookItem = (props) => {
 
       <View style={styles.bookItemBottomContainer}>
         <Text style={[styles.isbnNumber, styles.text]}>{props.bookISBN}</Text>
-        <TouchableOpacity>
-          <View style={styles.button}>
-            <Text style={[styles.buttonText, styles.text]}>READ</Text>
-          </View>
-        </TouchableOpacity>
+        <ReadBtnItem btnText="READ" />
       </View>
     </View>
   );
