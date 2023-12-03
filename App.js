@@ -18,6 +18,7 @@ const books = [
     bookDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus, nulla sit amet pellentesque ultricies, magna nisl vulputate urna, quis feugiat purus enim id ex.",
     bookISBN: "ISBN 978-8-2165-1860-1",
+    bookStock: "5",
   },
   {
     bookTitle: "Book title 2",
@@ -25,6 +26,7 @@ const books = [
     bookDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus, nulla sit amet pellentesque ultricies, magna nisl vulputate urna, quis feugiat purus enim id ex.",
     bookISBN: "ISBN 978-2-1425-4227-8",
+    bookStock: "7",
   },
   {
     bookTitle: "Book title 3",
@@ -32,6 +34,7 @@ const books = [
     bookDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus, nulla sit amet pellentesque ultricies, magna nisl vulputate urna, quis feugiat purus enim id ex.",
     bookISBN: "ISBN 978-5-9684-0436-7",
+    bookStock: "3",
   },
   {
     bookTitle: "Book title 4",
@@ -39,6 +42,7 @@ const books = [
     bookDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus, nulla sit amet pellentesque ultricies, magna nisl vulputate urna, quis feugiat purus enim id ex.",
     bookISBN: "ISBN 978-8-3356-4834-0",
+    bookStock: "2",
   },
 ];
 
@@ -49,6 +53,7 @@ export default function App() {
       bookAuthor={itemData.item.bookAuthor}
       bookDescription={itemData.item.bookDescription}
       bookISBN={itemData.item.bookISBN}
+      bookStock={itemData.item.bookStock}
       onTitlePress={() => bookTitlePressedHandler(itemData.item.bookTitle)}
     />
   );

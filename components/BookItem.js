@@ -15,11 +15,20 @@ const BookItem = (props) => {
 
   return (
     <View style={styles.bookItem}>
-      <TouchableOpacity style={styles.bookTitle} onPress={props.onTitlePress}>
-        <Text>{props.bookTitle}</Text>
+      <TouchableOpacity onPress={props.onTitlePress}>
+        <Text style={styles.bookTitle}>{props.bookTitle}</Text>
       </TouchableOpacity>
 
-      <Text style={[styles.bookAuthor, styles.text]}>{props.bookAuthor}</Text>
+      <View style={styles.bookItemTopContainer}>
+        <Text style={[styles.bookAuthor, styles.text]}>{props.bookAuthor}</Text>
+        <View style={styles.stockContainer}>
+          <Text style={[styles.bookStock, styles.text]}>Stock:</Text>
+          <Text style={[styles.bookStockCounter, styles.text]}>
+            {props.bookStock}
+          </Text>
+        </View>
+      </View>
+
       <Text style={[styles.bookDescription, styles.text]}>
         {props.bookDescription}
       </Text>
@@ -27,7 +36,7 @@ const BookItem = (props) => {
       <View style={styles.bookItemBottomContainer}>
         <Text style={[styles.isbnNumber, styles.text]}>{props.bookISBN}</Text>
         <ReadBtn btnText="READ" onBookRead={bookReadHandler} />
-        <AddBtn btnText="ADD" onBookRead={bookAddHandler} />
+        <AddBtn btnText="ADD" onBookAdd={bookAddHandler} />
       </View>
     </View>
   );
@@ -49,6 +58,15 @@ const styles = StyleSheet.create({
 
   text: {
     fontWeight: "500",
+  },
+
+  bookItemTopContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  stockContainer: {
+    flexDirection: "row",
   },
 
   bookDescription: {
