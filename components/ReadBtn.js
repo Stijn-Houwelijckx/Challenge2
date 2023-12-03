@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-const ReadBtnItem = (props) => {
+const ReadBtn = (props) => {
   return (
     <TouchableOpacity onPress={props.onBookRead}>
       <View style={styles.button}>
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ReadBtnItem;
+export default ReadBtn;

@@ -1,11 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-import ReadBtnItem from "./ReadBtnItem";
+import ReadBtn from "./ReadBtn";
+import AddBtn from "./AddBtn";
 
 const BookItem = (props) => {
   const bookReadHandler = () => {
     console.log(props.bookTitle + " read");
+  };
+
+  const bookAddHandler = () => {
+    console.log(props.bookTitle + " added");
   };
 
   return (
@@ -21,7 +26,8 @@ const BookItem = (props) => {
 
       <View style={styles.bookItemBottomContainer}>
         <Text style={[styles.isbnNumber, styles.text]}>{props.bookISBN}</Text>
-        <ReadBtnItem btnText="READ" onBookRead={bookReadHandler} />
+        <ReadBtn btnText="READ" onBookRead={bookReadHandler} />
+        <AddBtn btnText="ADD" onBookRead={bookAddHandler} />
       </View>
     </View>
   );
