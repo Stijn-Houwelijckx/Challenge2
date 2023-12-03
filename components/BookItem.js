@@ -36,7 +36,7 @@ const BookItem = (props) => {
       <View style={styles.bookItemBottomContainer}>
         <Text style={[styles.isbnNumber, styles.text]}>{props.bookISBN}</Text>
         <ReadBtn btnText="READ" onBookRead={bookReadHandler} />
-        <AddBtn btnText="ADD" onBookAdd={bookAddHandler} />
+        <AddBtn btnText="ADD" onAddToCart={props.onAddToCart} />
       </View>
     </View>
   );

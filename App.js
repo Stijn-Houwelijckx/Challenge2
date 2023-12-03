@@ -11,7 +11,7 @@ import {
 
 import BookItem from "./components/BookItem";
 
-const books = [
+const initialBooks = [
   {
     bookTitle: "Book title 1",
     bookAuthor: "by Some Random Dude",
@@ -47,6 +47,9 @@ const books = [
 ];
 
 export default function App() {
+  const [shoppingCartCount, setShoppingCartCount] = useState(0);
+  const [books, setBooks] = useState(initialBooks);
+
   const renderBookItem = (itemData) => (
     <BookItem
       bookTitle={itemData.item.bookTitle}
@@ -55,6 +58,7 @@ export default function App() {
       bookISBN={itemData.item.bookISBN}
       bookStock={itemData.item.bookStock}
       onTitlePress={() => bookTitlePressedHandler(itemData.item.bookTitle)}
+      onAddToCart={() => addToCartHandler(itemData.item)}
     />
   );
 
@@ -62,10 +66,34 @@ export default function App() {
     console.log(pressedTitle + " pressed");
   };
 
+  const addToCartHandler = (selectedBook) => {
+    // Check if the stock is greater than 0 before proceeding
+    if (parseInt(selectedBook.bookStock, 10) === 0) {
+      console.log("Cannot add item to cart. Stock is 0.");
+      return;
+    }
+
+    // Assuming you're updating the state and stock here
+    setShoppingCartCount((prevCount) => prevCount + 1);
+
+    // You can update the book stock accordingly
+    const updatedBooks = books.map((book) => {
+      if (book.bookISBN === selectedBook.bookISBN) {
+        // If it's the selected book, update stock
+        const updatedStock = String(parseInt(book.bookStock, 10) - 1);
+        return { ...book, bookStock: updatedStock };
+      } else {
+        // If it's not the selected book, keep it unchanged
+        return book;
+      }
+    });
+
+    // Update the state or data source with the new book array
+    setBooks(updatedBooks);
+  };
+
   return (
     <View style={styles.container}>
-      {/* <Text>Open up App.js to start working on your app!</Text> */}
-
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Bookshop</Text>
 
@@ -74,7 +102,7 @@ export default function App() {
             style={styles.shoppingCartImage}
             source={require("./assets/shopping-cart-icon.png")}
           />
-          <Text style={styles.shoppingCartCounter}>1</Text>
+          <Text style={styles.shoppingCartCounter}>{shoppingCartCount}</Text>
         </View>
       </View>
 
